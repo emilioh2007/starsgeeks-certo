@@ -1,0 +1,25 @@
+.conteiner {
+
+}
+
+header {
+    width: 100vw;
+    height: 440px;
+    background-color: lime;
+    margin: 0 auto;
+    border: 3px solid limegreen;
+    background-image: url(fotos/Logo\ Positivo.png);
+    background-repeat: no-repeat;
+}
+
+main {
+    width: 100vw;
+    height: 500px;
+    background-color: beige;
+}
+
+footer {
+    width: 100vw;
+    height: 84px;
+    background-color: gray;
+}

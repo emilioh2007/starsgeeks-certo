@@ -35,10 +35,11 @@ formulario.onsubmit = (evento) => {
         csenha.focus();
         return null;
     }
-    if (check.value == "") {
+    if (check.checked) {}
+    else{
         evento.preventDefault();
         mensagem.innerHTML = "<p> Necessario aceitar os termos! </p>";
-        email.focus();
+        check.focus();
         return null;
     }
 
@@ -55,5 +56,5 @@ formulario.onsubmit = (evento) => {
 
     setTimeout(() => {
         window.location.assign("login.html");
-    }, 1000);
+    }, 2000);
 }

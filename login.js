@@ -12,11 +12,12 @@ formulario.onsubmit = (evento) => {
         if (elemento.email === email.value && elemento.senha === senha.value) {
             evento.preventDefault();
             window.location.assign("catalogo.html");
+
             return true;
         }
         else{
             evento.preventDefault();
-            mensagem.innerHTML="<p> Senha ou E-mail incorretos </p>";
+            mensagem.innerHTML = "Senha ou E-mail incorretos";
             
         }
     });

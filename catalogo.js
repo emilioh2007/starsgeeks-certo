@@ -5,7 +5,11 @@ const nome = document.getElementById("nome");
 const descricao = document.getElementById("descricao");
 const foto = document.getElementById("foto");
 
+var emaillogado;
+femaillogado();
+
 carregarCatalogo();
+
 function carregarCatalogo(){
     let dados = JSON.parse(localStorage.getItem("catalogo"));
     let divcard = document.createElement("div");
@@ -44,6 +48,17 @@ function editar(indice){
     window.location.href = url;
 }
 
+function botaoc() {
 botaomodal.onclick = () =>{
     window.location.assign("selecionefilmes.html");
+}
+}
+
+function femaillogado() {
+    let dados = JSON.parse(sessionStorage.getItem("logado"));
+    if (dados == null) {
+        window.location.assign("login.html");
+    } else{
+        emaillogado = dados[0].email;
+    }
 }

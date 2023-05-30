@@ -6,8 +6,16 @@ const botao = document.getElementById("concluir");
 var emaillogado;
 femaillogado();
 
-botao.onclick = (evento) => {
+var url = new URL(window.location.href);
+var peditar = url.searchParams.get("peditar");
+var pindice = url.searchParams.get("indice");
 
+if (peditar == "true"){
+  editar(pindice);
+}
+
+botao.onclick = (evento) => {
+    if ((peditar != "true") || (peditar == null)){
     evento.preventDefault();
     fenvio()
         .then(result => {
@@ -30,6 +38,12 @@ botao.onclick = (evento) => {
             }
 
         });
+    }
+    else
+      {
+        editarenvio(evento);
+        
+      }
 }
 
 var nomeArq;
@@ -61,15 +75,46 @@ async function fenvio() {
     }
 }
 
-function carregarCatalogo() {
+function editar(indice){
+    nome.value = "";
+    descricao.value = "";
+    foto.files[0] = null;  
     let dados = JSON.parse(localStorage.getItem("catalogo"));
-    let divcard = document.createElement("div");
-    if (dados == null) {
-        divcard.innerHTML = "<p>Nenhum item cadsatrado</p>";
-        cards.appendChild(divcard);
-        return null;
-    }
+    nome.value = dados[indice].nome;
+    descricao.value = dados[indice].descricao;
+    fotoa= dados[indice].foto;
+   
+  }
+  var fotoa;
+
+function editarenvio(evento){
+    evento.preventDefault();
+   if ((fotoa != foto.value)&&(foto.value != "")){
+
+   fenvio()
+   .then(result =>{
+                   if(result){
+                     salvaEdicao(nomeArq);
+                      }
+                   });
+  }
+  else
+  {
+       salvaEdicao(fotoa);
+  } 
 }
+
+function salvaEdicao(pfoto){
+ let dados = JSON.parse(localStorage.getItem("catalogo"));
+ dados[pindice].nome = nome.value;
+ dados[pindice].descricao = descricao.value;
+ dados[pindice].foto = pfoto;
+ dados[pindice].email = emaillogado;
+ localStorage.setItem("catalogo", JSON.stringify(dados));
+ window.location.assign("catalogo.html");
+
+}
+
 
 function femaillogado() {
     let dados = JSON.parse(sessionStorage.getItem("logado"));

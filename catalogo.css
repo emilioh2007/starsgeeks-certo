@@ -176,6 +176,8 @@ footer{
     align-items: center;
     padding: 10px;
     justify-content: space-around;
+    background-color: black;
+    color: yellow;
 }
 
 .cardnome {

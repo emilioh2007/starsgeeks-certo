@@ -57,7 +57,7 @@ botaomodal.onclick = () =>{
 function femaillogado() {
     let dados = JSON.parse(sessionStorage.getItem("logado"));
     if (dados == null) {
-        window.location.assign("login.html");
+        window.location.assign("cadastro.html");
     } else{
         emaillogado = dados[0].email;
     }
